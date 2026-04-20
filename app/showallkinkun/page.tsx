@@ -75,8 +75,9 @@ export default function ShowAllKinkun() {
           <thead className="bg-gray-200 text-gray-800">
             <tr>
               <th className="border p-2">รูป</th>
-              <th className="border p-2">ร้าน</th>
-              <th className="border p-2">เมนู</th>
+              <th className="border p-2">กินอะไร</th>
+              <th className="border p-2">กินที่ไหน</th>
+              <th className="border p-2">วันไหน</th>
               <th className="border p-2">ราคา</th>
               <th className="border p-2">ACTION</th>
             </tr>
@@ -99,9 +100,9 @@ export default function ShowAllKinkun() {
                  />
                 </div>
                 </td>
-
-                <td className="border p-2">{item.food_where}</td>
                 <td className="border p-2">{item.food_name}</td>
+                <td className="border p-2">{item.food_where}</td>
+                <td className="border p-2 text-center"> {new Date(item.created_at).toLocaleDateString("th-TH")}</td>
                 <td className="border p-2">{item.food_pay}</td>
 
                 <td className="border p-2 text-center">

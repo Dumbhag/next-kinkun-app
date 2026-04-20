@@ -23,10 +23,10 @@ export default function Home() {
       <div className="bg-white p-8 rounded-xl shadow-md w-[420px] text-center">
         
         {/* Title */}
-        <h1 className="text-gray-800 font-bold text-xl">
+        <h1 className="text-blue-600 font-bold text-xl">
           Kinkun APP (Supabase)
         </h1>
-        <p className="text-gray-600 mb-4">บันทึกการกิน</p>
+        <p className="text-blue-600 mb-4">บันทึกการกิน</p>
 
         {/* รูป */}
         <div className="flex justify-center mb-4">
