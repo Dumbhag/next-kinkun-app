@@ -9,7 +9,7 @@ export default function Home() {
   const [code, setCode] = useState("");
 
   const handleLogin = () => {
-    if (code === "1234") {
+    if (code === "sauiot") {
       router.push("/showallkinkun");
     } else {
       alert("Invalid code");
