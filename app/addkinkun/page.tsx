@@ -13,7 +13,6 @@ export default function AddKinkun() {
   const [imageFile, setImageFile] = useState<any>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
 
-  // 📸 เลือกรูป
   const handleImage = (e: any) => {
     const file = e.target.files[0];
     if (file) {
@@ -22,17 +21,14 @@ export default function AddKinkun() {
     }
   };
 
-  // 💾 บันทึกจริง
   const handleSubmit = async () => {
     if (!shop || !menu || !price || !imageFile) {
       alert("กรอกข้อมูลให้ครบ");
       return;
     }
 
-    // 🔥 ตั้งชื่อไฟล์
     const fileName = `${Date.now()}_${imageFile.name}`;
 
-    // 🔥 upload รูป
     const { error: uploadError } = await supabase.storage
       .from("kinkun_bk")
       .upload(fileName, imageFile);
@@ -42,14 +38,12 @@ export default function AddKinkun() {
       return;
     }
 
-    // 🔥 เอา URL รูป
     const { data } = supabase.storage
       .from("kinkun_bk")
       .getPublicUrl(fileName);
 
     const image_url = data.publicUrl;
 
-    // 🔥 insert DB
     const { error: insertError } = await supabase
       .from("kinkun_tb")
       .insert([
@@ -111,7 +105,6 @@ export default function AddKinkun() {
             className="w-full border p-2 rounded text-gray-900"
           />
 
-          {/* 📸 upload */}
           <div>
             <label className="text-sm text-black block mb-1">รูปกิน</label>
 
@@ -125,7 +118,6 @@ export default function AddKinkun() {
             </label>
           </div>
 
-          {/* preview */}
           {imagePreview && (
             <img src={imagePreview} className="w-24 mt-2" />
           )}

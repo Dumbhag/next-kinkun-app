@@ -15,7 +15,6 @@ export default function UpdateKinkun() {
   const [imageFile, setImageFile] = useState<any>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
 
-  // 🔥 โหลดข้อมูลเดิม
   useEffect(() => {
     const fetchData = async () => {
       const { data, error } = await supabase
@@ -35,7 +34,6 @@ export default function UpdateKinkun() {
     if (id) fetchData();
   }, [id]);
 
-  // 📸 เลือกรูป
   const handleImage = (e: any) => {
     const file = e.target.files[0];
     if (file) {
@@ -44,7 +42,6 @@ export default function UpdateKinkun() {
     }
   };
 
-  // 💾 บันทึกการแก้ไข
   const handleUpdate = async () => {
     if (!foodName || !foodWhere || !foodPay) {
       alert("กรอกข้อมูลให้ครบ");
@@ -53,16 +50,13 @@ export default function UpdateKinkun() {
 
     let image_url = imagePreview;
 
-    // 🔥 ถ้ามีเปลี่ยนรูป
     if (imageFile) {
       const oldName = imagePreview?.split("/").pop() || "";
 
-      // ลบรูปเก่า
       await supabase.storage.from("kinkun").remove([oldName]);
 
       const newName = `${Date.now()}_${imageFile.name}`;
 
-      // upload ใหม่
       const { error } = await supabase.storage
         .from("kinkun_bk")
         .upload(newName, imageFile);
@@ -79,7 +73,6 @@ export default function UpdateKinkun() {
       image_url = data.publicUrl;
     }
 
-    // update DB
     const { error } = await supabase
       .from("kinkun_tb")
       .update({
