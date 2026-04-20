@@ -14,7 +14,7 @@ export default function ShowAllKinkun() {
       .select("*")
       .order("created_at", { ascending: false });
 
-    console.log("DATA:", data); // 🔥 debug ดู URL รูป
+    console.log("DATA:", data); 
 
     if (!error) {
       setData(data || []);
